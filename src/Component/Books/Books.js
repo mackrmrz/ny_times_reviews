@@ -11,20 +11,24 @@ class Books extends Component {
 
   // console.log('book from books', this.state.book);
 
-  fetchBooks = async () => {
+  fetchBooks() {
     const api_key = process.env.REACT_APP_API_KEY;
-    await axios
+    axios
       .get(
         `https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${api_key}`
       )
-      .then((res) => this.setState({ book: res.data.results.book }))
+      .then((res) =>
+        this.setState({
+          book: res.data.results.books
+        })
+      )
       .catch((error) => console.log('ERROR: ', error));
-  };
+  }
 
   bookLayout() {
     // console.log('GETTING THE CALL');
-    this.state.book.map((bookItem) => {
-      <BookItem book={bookItem} />;
+    return this.state.book.map((bookItem, index) => {
+      return <BookItem book={bookItem} key={index} />;
     });
   }
 
