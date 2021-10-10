@@ -16,7 +16,7 @@ const Movies = () => {
         `https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=godfather&api-key=${api_key}`
       )
       .then((res) => {
-        return setMovies([...res.data.results]), setMovieMeta([res.data]);
+        return setMovies([...res.data.results]), setMovieMeta(res.data);
       })
       .catch((error) => console.log('ERROR:', error));
   };
