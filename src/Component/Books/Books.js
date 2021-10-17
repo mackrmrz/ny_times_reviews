@@ -6,7 +6,8 @@ require('dotenv').config();
 
 class Books extends Component {
   state = {
-    book: []
+    book: [],
+    buyLinks: []
   };
 
   // console.log('book from books', this.state.book);
