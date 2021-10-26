@@ -9,9 +9,7 @@ class Books extends Component {
     book: [],
     buyLinks: []
   };
-
-  // console.log('book from books', this.state.book);
-
+  // https://api.nytimes.com/svc/books/v3/reviews.json?author=Stephen+King&api-key=yourkey
   fetchBooks() {
     const api_key = process.env.REACT_APP_API_KEY;
     axios
