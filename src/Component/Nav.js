@@ -4,6 +4,9 @@ import { FaBars } from 'react-icons/fa';
 import SearchBar from './SearchBar';
 
 const Navbar = () => {
+  const handleSearch = () => {
+    console.log("searching author",)
+  }
   return (
     <nav className="contianer flex flex-col md:flex-row justify-around">
       <div className="logo p-6 text-gray-800">
@@ -20,7 +23,7 @@ const Navbar = () => {
           <NavLink to="/Books">Books</NavLink>
         </div>
       </div>
-      <SearchBar />
+      <SearchBar handleSearch={handleSearch}/>
     </nav>
   );
 };
