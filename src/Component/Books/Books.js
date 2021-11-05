@@ -2,13 +2,22 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import BookItem from './bookItem';
 import BuyLinks from './buyLinks';
+import SearchBar from '../SearchBar';
 require('dotenv').config();
 
+//Use the library js-search as you would the FormData HOC
+
 class Books extends Component {
-  state = {
-    book: [],
-    buyLinks: []
-  };
+  constructor() {
+    super();
+    this.state = {
+      book: [],
+      buyLinks: [],
+      author: ''
+    };
+
+    this.searchChange = this.searchChange.bind(this);
+  }
   // https://api.nytimes.com/svc/books/v3/reviews.json?author=Stephen+King&api-key=yourkey
   fetchBooks() {
     const api_key = process.env.REACT_APP_API_KEY;
@@ -31,11 +40,31 @@ class Books extends Component {
     });
   }
 
+  searchChange(e) {
+    console.log('EVENT CHANGE',{[e.target.name]:e.target.value});
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  searchBarQuery(e) {
+    console.log('ONSUBMIT');
+    e.preventDefault();
+  }
+
   componentDidMount() {
     this.fetchBooks();
   }
   render() {
-    return <div className="text-red-600">{this.bookLayout()}</div>;
+    return (
+      <div className="text-red-600 grid grid-col-3">
+        <SearchBar
+          onSubmit={this.searchBarQuery}
+          handleChange={this.searchChange}
+        />
+        {this.bookLayout()}
+      </div>
+    );
   }
 }
 
