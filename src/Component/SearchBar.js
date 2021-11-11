@@ -5,12 +5,12 @@ const SearchBar = (props) => {
   // remove this state and send the callback func to parent component
   return (
     <form
-      className="p-4 w-60 border-b-2 bg-gray-500 flex"
+      className="p-4 border-b-2 bg-gray-500 flex w-full"
       onSubmit={props.searchBarQuery}
     >
       <label>Find By Author</label>
       <input
-        className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:bg-gray-200"
+        className="appearance-none bg-transparent border-none w-screen text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none focus:bg-gray-200 "
         type="text"
         name="author"
         value={values.author}

@@ -41,7 +41,7 @@ class Books extends Component {
   }
 
   searchChange(e) {
-    console.log('EVENT CHANGE',{[e.target.name]:e.target.value});
+    console.log('EVENT CHANGE', { [e.target.name]: e.target.value });
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -57,12 +57,14 @@ class Books extends Component {
   }
   render() {
     return (
-      <div className="text-red-600 grid grid-col-3">
-        <SearchBar
-          onSubmit={this.searchBarQuery}
-          handleChange={this.searchChange}
-        />
-        {this.bookLayout()}
+      <div className="text-red-600">
+        <div className="col-span-2 text-justify">
+          <SearchBar
+            onSubmit={this.searchBarQuery}
+            handleChange={this.searchChange}
+          />
+        </div>
+        <div className="col-span-3 flex flex-wrap gap-4 items-center">{this.bookLayout()}</div>
       </div>
     );
   }
