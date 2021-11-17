@@ -20,6 +20,9 @@ const Navbar = () => {
         <div className="text-white p-5">
           <NavLink to="/Books">Books</NavLink>
         </div>
+        <div className="text-white p-5">
+          <NavLink to="/Articles">Articles</NavLink>
+        </div>
       </div>
     </nav>
   );
